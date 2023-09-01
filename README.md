@@ -30,6 +30,12 @@
 - update store with trailer video
 - embdedded the youtube video and make it autoplay & mute
 - Tailwindcss on Main container
+- secondary container
+- Build Movielist
+- Build Moviecard
+- TMDB image CDN
+- Browse page with tailwind css
+- usePopularMovies custom hook
 
 # features
 - Login/Signup page

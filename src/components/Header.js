@@ -44,14 +44,14 @@ signOut(auth).then(() => {
 },[])
 
   return (
-    <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10  flex justify-between">
+    <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black/[0.7] z-10  flex justify-between">
         <img 
         className="w-44"
          src={NLOGO}
          alt="logo-netflix"
         />
          {user && <div className="flex p-3">
-          <img className="w-12 h-12" alt="usericon" src={user?.photoURL} />
+          <img className="w-10 h-10" alt="usericon" src={user?.photoURL} />
           <button onClick={handleSignOut} className="font-bold text-white ">
             (Sign Out)
           </button>
