@@ -8,7 +8,11 @@ const MainContainer = () => {
     if(movies === null) return; // bcoz initially the movies in store is null so, early return to not get any error if movies is null
    //if(!movies) movies not present
 
-    const mainMovie = movies[0];
+ let min = 0;
+ let max = 20;
+ const i = (Math.floor(Math.random() * (max - min )) + min);
+//    console.log(i);
+    const mainMovie = movies[i];
     console.log(mainMovie)
 
     const {original_title, overview,id} = mainMovie;
