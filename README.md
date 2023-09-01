@@ -22,6 +22,14 @@
 - Registered TMDB api & create an app & get access token
 - Get data from Now Playing MOvieslist API 
 - fetch movies from tmdb
+- custom hook for now playing movies
+- create movieSlice 
+- updated the store with movies 
+- Planning UI of Main & sec. container
+- fetch data for trailer video
+- update store with trailer video
+- embdedded the youtube video and make it autoplay & mute
+- Tailwindcss on Main container
 
 # features
 - Login/Signup page
