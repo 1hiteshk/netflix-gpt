@@ -8,14 +8,13 @@ import {
 } from "firebase/auth";
 import { updateProfile } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { USER_AVATAR } from "../utils/constants";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const name = useRef(null);
@@ -50,12 +49,12 @@ const Login = () => {
           // Signed in , whenever we r signing up it will auto. sign us in
           const user = userCredential.user;
           updateProfile(user, {
-            displayName: name.current.value, photoURL: "https://avatars.githubusercontent.com/u/109789870?v=4"
+            displayName: name.current.value, photoURL: USER_AVATAR,
           }).then(() => {
             // Profile updated!, gettting the updated value of user
             const {uid,email, displayName, photoURL} = auth.currentUser; // user wont have updated value so we will have a new auth info.
             dispatch(addUser({uid: uid, email: email, displayName: displayName ,photoURL: photoURL}));
-            navigate("/browse")
+            
           }).catch((error) => {
             // An error occurred
             setErrorMessage(error.message)
@@ -82,7 +81,7 @@ const Login = () => {
           // Signed in , successfully then we will have a user
           const user = userCredential.user;
           console.log(user);
-          navigate("/browse")
+          
         })
         .catch((error) => {
           const errorCode = error.code;
