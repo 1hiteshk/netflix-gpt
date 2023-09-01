@@ -36,6 +36,10 @@
 - TMDB image CDN
 - Browse page with tailwind css
 - usePopularMovies custom hook
+- Gpt search feature
+- GPT search page
+- Gpt search bar
+- Multilingual feature in gptSearchPage in header with dropdown selection
 
 # features
 - Login/Signup page
