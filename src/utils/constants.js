@@ -18,4 +18,7 @@ export const API_OPTIONS =  {
   export const SUPPORTED_LANGUAGES = [{identifier: "en",name: "English"},
   {identifier: "hn",name: "Hindi"},
   {identifier: "ur",name: "Urdu"},
-  {identifier: "sp",name: "Spanish"},]
+  {identifier: "sp",name: "Spanish"},];
+
+  export const OPENAI_KEY = "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";
+  // export const OPENAI_KEY = "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";

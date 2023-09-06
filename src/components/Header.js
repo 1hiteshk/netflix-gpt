@@ -64,9 +64,9 @@ const handleLanguageChange = (e) => {
          src={NLOGO}
          alt="logo-netflix"
         />
-         {user && <div className="flex p-2">
+         {user && <div className="flex justify-center items-center p-2">
           { showGptSearch && (
-            <select className="p-2 bg-gray-900 text-white m-2 cursor-pointer"
+            <select className="p-2 px-2 bg-gray-900 text-white m-2 cursor-pointer rounded"
             onChange={handleLanguageChange}
             >
               {SUPPORTED_LANGUAGES.map(lang => <option className="cursor-pointer" key={lang.identifier} value={lang.identifier}>{lang.name}</option>)}
@@ -81,7 +81,7 @@ const handleLanguageChange = (e) => {
           >
             {showGptSearch ? "Homepage" : "GPT Search"}
           </button>
-          <img className="w-10 h-10" alt="usericon" src={user?.photoURL} />
+          <img className="w-10 h-10 " alt="usericon" src={user?.photoURL} />
           <button onClick={handleSignOut} className="font-bold text-white ">
             (Sign Out)
           </button>
