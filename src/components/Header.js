@@ -58,13 +58,13 @@ const handleLanguageChange = (e) => {
 }
 
   return (
-    <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10  flex justify-between">
+    <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10  flex flex-col md:flex-row md:justify-between ">
         <img 
-        className="w-44"
+        className="w-44 mx-auto md:mx-0"
          src={NLOGO}
          alt="logo-netflix"
         />
-         {user && <div className="flex justify-center items-center p-2">
+         {user && <div className="flex justify-between md:justify-center items-center p-2">
           { showGptSearch && (
             <select className="p-2 px-2 bg-gray-900 text-white m-2 cursor-pointer rounded"
             onChange={handleLanguageChange}
@@ -81,7 +81,7 @@ const handleLanguageChange = (e) => {
           >
             {showGptSearch ? "Homepage" : "GPT Search"}
           </button>
-          <img className="w-10 h-10 " alt="usericon" src={user?.photoURL} />
+          <img className="hidden md:block w-10 h-10 " alt="usericon" src={user?.photoURL} />
           <button onClick={handleSignOut} className="font-bold text-white ">
             (Sign Out)
           </button>

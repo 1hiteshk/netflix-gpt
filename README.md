@@ -40,6 +40,15 @@
 - GPT search page
 - Gpt search bar
 - Multilingual feature in gptSearchPage in header with dropdown selection
+- get openai api key
+- gpt search api call
+- fetched gpt movie sugesstions from tmdb
+- created gptSlice added data over there
+- reused movie list component to make movie suggestion container
+- memoization
+- .env file added
+- adding .env file to gitignore
+- Made our site mobile responsive
 
 # features
 - Login/Signup page

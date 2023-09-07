@@ -100,6 +100,7 @@ const Login = () => {
       <Header />
       <div className="absolute">
         <img
+        className="h-screen object-cover md:h-max  " //md:h-auto md:w-full overflow-x-hidden
           src={BG_URL}
           alt="logo"
         />
@@ -107,7 +108,7 @@ const Login = () => {
       {/* this will prevent refreshing/submit form on click of signIn */}
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="absolute w-3/12 p-12 bg-black bg-opacity-80 my-36 mx-auto left-0 right-0 text-white rounded-lg"
+        className="absolute w-full md:w-3/12 p-12 bg-black bg-opacity-80 my-36 mx-auto left-0 right-0 text-white rounded-lg"
       >
         <h1 className="font-bold text-3xl py-4">
           {isSignInForm ? "Sign In" : "Sign Up"}
