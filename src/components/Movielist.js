@@ -1,7 +1,7 @@
 import React from "react";
 import MovieCard from "./MovieCard";
 
-const Movielist = ({ title, movies }) => {
+const MovieList = ({ title, movies }) => {
   console.log(movies);
   return (
     <div className="px-8 py-8">
@@ -22,4 +22,4 @@ const Movielist = ({ title, movies }) => {
   );
 };
 
-export default Movielist;
+export default MovieList;

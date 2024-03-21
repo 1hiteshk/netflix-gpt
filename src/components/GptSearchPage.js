@@ -1,5 +1,5 @@
 import GptSearchBar from "./GptSearchBar";
-import GptMovieSuggestion from "./GptMovieSuggestion";
+import GptMovieSuggestions from "./GptMovieSuggestions";
 import { bg_url } from "../utils/constants";
 
 const GptSearchPage = () => {
@@ -14,7 +14,7 @@ const GptSearchPage = () => {
       </div>
       <div className="">
         <GptSearchBar />
-        <GptMovieSuggestion />
+        <GptMovieSuggestions />
       </div>
     </div>
   );
