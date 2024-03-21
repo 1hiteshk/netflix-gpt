@@ -1,68 +1,59 @@
-# netflix gpt
+# Netflix GPT
 
-- create-react-app
-- configured tailwind css
+- Create React App
+- Configured Tailwind CSS
 - Header
 - Routing of App
-- Login form
-- sign up form
-- form validation
-- useRef hook
-- firebase setup
-- Deploying our app to production server
-- create signUp user account
-- Implement sign In user api
-- Created Redux Store with userSlice
-- implemented sign out feature
-- update profile api call
-- BugFix: Sign up user displayName and profile picture update
-- BugFix: if user not logged in Redirect /browse to /login page and vice-versa 
-- Unsubscribed to the onAuthStateChanged callback
+- Login/Sign In form
+- Sign Up form
+- Form Validation
+- useRef Hook
+- Firebase Setup
+- Create sign up user account
+- implement sign in user API
+- Create redux store with userSlice
+- implement sign out
 - Add hardcoded values to the constants file
-- Registered TMDB api & create an app & get access token
-- Get data from Now Playing MOvieslist API 
-- fetch movies from tmdb
-- custom hook for now playing movies
-- create movieSlice 
-- updated the store with movies 
-- Planning UI of Main & sec. container
-- fetch data for trailer video
-- update store with trailer video
-- embdedded the youtube video and make it autoplay & mute
-- Tailwindcss on Main container
-- secondary container
-- Build Movielist
-- Build Moviecard
-- TMDB image CDN
-- Browse page with tailwind css
-- usePopularMovies custom hook
-- Gpt search feature
-- GPT search page
-- Gpt search bar
-- Multilingual feature in gptSearchPage in header with dropdown selection
-- get openai api key
-- gpt search api call
-- fetched gpt movie sugesstions from tmdb
-- created gptSlice added data over there
-- reused movie list component to make movie suggestion container
-- memoization
-- .env file added
-- adding .env file to gitignore
-- Made our site mobile responsive
+- Register TMDB API & create an app & get access token
+- Get data from TMDB now playing movie list API
+- Custom hook for now playing movies
+- Create movieSlice
+- Update store with movie data
+- Planning for MainContainer and SecondaryContainer
+- Fetch data for Trailer video
+- Update store with Trailer video
+- Embedded the youtube video and make it autoplay and mute
+- Build secondary container with MovieList and MovieCard
+- Custom hooks for different categories of moviesList
+- GPT Search Page
+- GPT Search Bar
+- Get Open AI key
+- fetched gptMovieSuggestion data from Tmdb API
+- make app responsive
 
-# features
-- Login/Signup page
-  - sign in / sign up form
-  - redirect to browse page
+# Features
 
-- Browse page is for logged in user / after authentication
+- Login/Signup
+  - SignIn/ SignUp free
+  - redirect to browse Page
+- Browse (after authentication)
   - Header
-  - Main movie
-     - Trailer in background
-     - Title and Description
-     - Movie suggestionns
-        - MovieLists * n
+  - Main Movie
+    - trailer in background
+    - Title & description
+    - MovieSuggestions
+      - MovieLists \* N
+- NetflixGPT
+  - Search Bar
+  - Movie Suggestions
+ 
+Live Link - https://netflix-gpt-v6.netlify.app/
 
-- Netflix GPT
-   - Search Bar
-   - Movie Suggestions
+Some Snapshots
+![Screenshot 2024-02-25 225712](https://github.com/sakshi5111/Netflix-GPT/assets/72803817/b79ea050-ca2d-481d-ac55-9b50d27fa4e5)
+![Screenshot 2024-02-25 231443](https://github.com/sakshi5111/Netflix-GPT/assets/72803817/9b05aa96-9b1a-44a6-80cf-d464838d5d97)
+![Screenshot 2024-02-25 231633](https://github.com/sakshi5111/Netflix-GPT/assets/72803817/28f6a613-7b04-4964-9ea2-6e407e09e4a2)
+![Screenshot 2024-02-25 231648](https://github.com/sakshi5111/Netflix-GPT/assets/72803817/00d72266-30b0-44ab-8b2d-ae35da5d0500)
+![Screenshot 2024-02-25 231708](https://github.com/sakshi5111/Netflix-GPT/assets/72803817/8fd87eb2-b5bd-4be9-80bc-2228439b9bfc)
+![Screenshot 2024-02-25 231745](https://github.com/sakshi5111/Netflix-GPT/assets/72803817/803ac51e-439a-46c2-af5a-0fd8c486fbee)
+![Screenshot 2024-02-25 231758](https://github.com/sakshi5111/Netflix-GPT/assets/72803817/4f602f65-cc4a-439e-994a-43a70f003cd6)

@@ -1,18 +1,18 @@
 import React from "react";
 import MovieCard from "./MovieCard";
 
-const Movielist = ({ title, movies }) => {
+const MovieList = ({ title, movies }) => {
   console.log(movies);
   return (
-    <div className="px-6 py-6 ">
-      <h1 className="text-lg md:text-3xl text-white py-4">{title}</h1>
-      <div className="flex overflow-x-scroll ">
+    <div className="px-8 py-8">
+      <h1 className="text-lg md:text-3xl py-2 text-white">{title}</h1>
+      <div className="flex overflow-x-scroll">
         <div className="flex">
           {movies?.map((movie) => (
             <MovieCard
-              key={movie?.id}
-              posterPath={movie?.poster_path}
-              title={movie?.original_title}
+              key={movie.id}
+              posterPath={movie.poster_path}
+              movieTitle={movie.title}
               movie={movie}
             />
           ))}
@@ -22,4 +22,4 @@ const Movielist = ({ title, movies }) => {
   );
 };
 
-export default Movielist;
+export default MovieList;

@@ -19,24 +19,24 @@ const MovieDetailedCard = ({ movie, path, onClose }) => {
           <div className="w-full text-white md:p-10 mt-20  justify-center md:flex bg-black opacity-80 rounded-lg">
             <div className="flex justify-center">
               <img
-                className="h-72 rounded-lg "
+                className="h-72 rounded-lg"
                 alt={movie.original_title}
                 src={IMG_CDN_URL + path}
               />
             </div>
             <div className="w-full md:w-2/4 md:pl-10">
               <p className="text-4xl pb-6 font-bold flex justify-center">{movie.original_title}</p>
-              <p className="text-xl px-2">{movie.overview}</p>
+              <p className="text-xl px-2 ">{movie.overview}</p>
               <p className="text-xl px-2 py-2 ">
                 {"Release Date : " + movie.release_date}
               </p>
-             <div className="flex justify-center">
-             <button
-                className=" border-solid border-white border-2 py-1 px-5 rounded-lg text-xl text-center hover:bg-gray-500 my-4"
+              <div className="flex justify-center">
+              <button
+                className="border-solid border-white border-2 py-1 px-5 rounded-lg text-xl text-center hover:bg-gray-500 my-4"
                 onClick={handleClickMovieTrailer}>
-                ▷ Play
+                <i className="fa-solid fa-play pr-2"></i>Play
               </button>
-             </div>
+              </div>
             </div>
           </div>
         ) : (

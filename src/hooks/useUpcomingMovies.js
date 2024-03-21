@@ -1,22 +1,25 @@
-import { useDispatch, useSelector } from "react-redux";
-import { API_OPTIONS } from "../utils/constants";
-import {  addUpcomingMovies } from "../utils/movieSlice";
+import { useDispatch } from "react-redux";
+import { API_Options } from "../utils/constants";
+import { addUpcomingMovies } from "../utils/moviesSlice";
 import { useEffect } from "react";
 
 const useUpcomingMovies = () => {
-    // fetch data from tmdb api and update the store
+  //below code is fetching the data and update the store with this movie data from TMDB API
   const dispatch = useDispatch();
-  const upcomingMovies = useSelector(store => store.movies.upcomingMovies);
-
 
   const getUpcomingMovies = async () => {
-    const data = await fetch('https://api.themoviedb.org/3/movie/upcoming?&page=1', API_OPTIONS);
-    console.log(data);
+    const data = await fetch(
+      "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1",
+      API_Options
+    );
     const json = await data.json();
-    console.log(json.results);
-    dispatch( addUpcomingMovies(json.results));
+    dispatch(addUpcomingMovies(json.results));
   };
- 
- useEffect(() => !upcomingMovies && getUpcomingMovies(),[]);
-}
+
+  useEffect(() => {
+    getUpcomingMovies();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+};
+
 export default useUpcomingMovies;

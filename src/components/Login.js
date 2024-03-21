@@ -1,22 +1,23 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Header from "./Header";
-import { checkValidData } from "../utils/validate";
+import { bg_url } from "../utils/constants";
+import { checkValidateData } from "../utils/Validate";
 import {
-  getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
-import { updateProfile } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
-//import BG_URL from '../utils/BG_URL.jpg';
-import { BG_URL, USER_AVATAR } from "../utils/constants";
-import '../../src/index.css';
 
 const Login = () => {
-  const [isSignInForm, setIsSignInForm] = useState(true);
+  const [isSignIn, setIsSignIn] = useState(true);
+
   const [errorMessage, setErrorMessage] = useState(null);
+
+  const [passwordType, setPasswordType] = useState("password");
+
   const dispatch = useDispatch();
 
   const name = useRef(null);
@@ -24,98 +25,88 @@ const Login = () => {
   const password = useRef(null);
 
   const handleButtonClick = () => {
-    // validate the form data
+    //validate email and password
 
-    // console.log(email.current.value);
-    // console.log(password.current.value);
-
-    const message = checkValidData(
-      name?.current?.value,
+    const message = checkValidateData(
       email.current.value,
       password.current.value
     );
     setErrorMessage(message);
-    // console.log(message);
-
     if (message) return;
 
-    // sign In / Sign Up logic , if msg is null, means passwrd,email are correct
-    if (!isSignInForm) {
-      //sign up form logic , once u call this api it will create a user on firebase & will give u a response
+    //sign in/ sign up
+    if (!isSignIn) {
+      //sign up
       createUserWithEmailAndPassword(
         auth,
         email.current.value,
         password.current.value
       )
         .then((userCredential) => {
-          // Signed in , whenever we r signing up it will auto. sign us in
           const user = userCredential.user;
           updateProfile(user, {
-            displayName: name.current.value, photoURL: USER_AVATAR,
-          }).then(() => {
-            // Profile updated!, gettting the updated value of user
-            const {uid,email, displayName, photoURL} = auth.currentUser; // user wont have updated value so we will have a new auth info.
-            dispatch(addUser({uid: uid, email: email, displayName: displayName ,photoURL: photoURL}));
-            
-          }).catch((error) => {
-            // An error occurred
-            setErrorMessage(error.message)
-          });
-          // if my response is success it will gave me a user object
-          console.log(user);
-         
-          // ...
+            displayName: name.current.value,
+            photoURL: "",
+          })
+            .then(() => {
+              // Profile updated!
+              const { uid, email, displayName } = auth.currentUser;
+              dispatch(
+                addUser({ uid: uid, email: email, displayName: displayName })
+              );
+            })
+            .catch((error) => {
+              // An error occurred
+              setErrorMessage(error.message);
+            });
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          setErrorMessage(errorCode + "-" + errorMessage);
+          setErrorMessage(errorCode + " - " + errorMessage);
         });
     } else {
-      // sign in logic
-      const auth = getAuth();
+      //sign in
       signInWithEmailAndPassword(
         auth,
         email.current.value,
         password.current.value
       )
         .then((userCredential) => {
-          // Signed in , successfully then we will have a user
           const user = userCredential.user;
           console.log(user);
-          
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          setErrorMessage(errorCode + "-" + errorMessage);
+          setErrorMessage(errorCode + " - " + errorMessage);
         });
     }
   };
 
-  const toggleSignInForm = () => {
-    setIsSignInForm(!isSignInForm);
+  const toggleSignUp = () => {
+    setIsSignIn(!isSignIn);
   };
 
   return (
-    <div className="">
+    <div>
       <Header />
-      <div className="absolute">
+      <div className="fixed">
         <img
-        className=" h-screen object-cover   md:w-screen " //md:h-auto md:w-full overflow-x-hidden
-          src={BG_URL}
-          alt="logo"
+          className="h-screen object-cover md:w-screen"
+          src={bg_url}
+          alt="bg-img"
         />
       </div>
-      {/* this will prevent refreshing/submit form on click of signIn */}
       <form
-        onSubmit={(e) => e.preventDefault()}
-        className="absolute w-full md:w-3/12 py-2 px-12 bg-black bg-opacity-80 my-44 md:my-24 mx-auto left-0 right-0 text-white rounded-lg"
-      >
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+        className="w-full md:w-[30%] absolute px-10 py-2 my-32 md:my-20 mx-auto right-0 left-0 bg-black text-white bg-opacity-80 rounded-lg">
         <h1 className="font-bold text-3xl py-4">
-          {isSignInForm ? "Sign In" : "Sign Up"}
+          {isSignIn ? "Sign In" : "Sign Up"}
         </h1>
-        {!isSignInForm && (
+        {!isSignIn && (
           <input
             ref={name}
             type="text"
@@ -126,27 +117,60 @@ const Login = () => {
         <input
           ref={email}
           type="text"
-          placeholder="Email Address"
+          placeholder="Email"
           className="p-4 my-2 w-full bg-gray-700 rounded-lg"
         />
-        <input
-          ref={password}
-          type="password"
-          placeholder="Password"
-          className="p-4 my-2 w-full bg-gray-700 rounded-lg"
-        />
+        <div className="flex">
+          <input
+            ref={password}
+            type={passwordType}
+            placeholder="Password"
+            className="p-4 my-2 w-full bg-gray-700 rounded-lg "
+          />
+          <i className="fa-regular fa-eye pt-7 absolute right-14"></i>
+          {passwordType === "password" ? (
+            <span onClick={() => setPasswordType("text")}>
+              <i className="fa-regular fa-eye-slash pt-7 absolute right-14 cursor-pointer"></i>
+            </span>
+          ) : (
+            <span onClick={() => setPasswordType("password")}>
+              <i className="fa-regular fa-eye pt-7 absolute right-14 cursor-pointer"></i>
+            </span>
+          )}
+        </div>
+        <div>
+         
+        </div>
         <p className="text-red-500 font-bold text-lg py-2">{errorMessage}</p>
         <button
-          onClick={handleButtonClick}
           className="py-4 my-2 bg-red-700 w-full rounded-lg"
-        >
-          {isSignInForm ? "Sign In" : "Sign Up"}
+          onClick={handleButtonClick}>
+          {isSignIn ? "Sign In" : "Sign Up"}
         </button>
-        <p className="py-4 cursor-pointer hover:text-red-500" onClick={toggleSignInForm}>
-          {isSignInForm
-            ? "New to Netflix? Sign up now"
-            : "Already registered Sign In now"}
-        </p>
+        <div className="flex justify-between text-gray-500 mb-6">
+          <div>
+            <input type="checkbox" className="" />
+            Remember me
+          </div>
+          <p className="cursor-pointer hover:underline hover:text-white">Need help?</p>
+        </div>
+        <div className="text-gray-500 text-center">
+          <p className="pb-2">
+            {isSignIn ? "New to Netflix? " : "Already registered? "}
+            <b
+              className="text-white cursor-pointer hover:underline hover:text-red-600"
+              onClick={toggleSignUp}>
+              {isSignIn ? "Sign up now." : "Sign in now."}
+            </b>
+          </p>
+          <p className="pb-2">
+            This page is protected by Google reCAPTCHA to ensure you're not a
+            bot.
+            <span className="cursor-pointer text-blue-500 hover:underline">
+              Learn more.
+            </span>
+          </p>
+        </div>
       </form>
     </div>
   );

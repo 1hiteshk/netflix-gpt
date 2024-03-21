@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-.hideScrollBar::-webkit-scrollbar{
-    display: none;
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 5px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    background: #000000;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+ 
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
